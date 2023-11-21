@@ -1,9 +1,8 @@
 package com.deividasstr.newhost
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.deividasstr.base.AssistedSavedStateViewModelFactory
 import com.deividasstr.paymentplugin.PaymentPluginData
 import com.deividasstr.plugin.pluginactions.stateprovision.PluginStateConsumer
 import com.deividasstr.plugin.pluginactions.validation.ValidityProvider
@@ -20,12 +19,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
-import javax.inject.Inject
 
 class NewHostViewModel @AssistedInject constructor(
     private val pluginManager: PluginManager,
     @Assisted private val arguments: Arguments,
-    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(NewHostState(listOf()))
@@ -91,10 +88,19 @@ class NewHostViewModel @AssistedInject constructor(
     data class Arguments(val login: String?)
 
     @AssistedFactory
-    interface Factory : AssistedSavedStateViewModelFactory<Arguments, NewHostViewModel> {
-        override fun create(
-            arguments: Arguments,
-            savedStateHandle: SavedStateHandle
-        ): NewHostViewModel
+    interface Factory {
+        fun create(arguments: Arguments): NewHostViewModel
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    companion object {
+        fun provideFactory(
+            assistedFactory: Factory,
+            arguments: Arguments
+        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return assistedFactory.create(arguments) as T
+            }
+        }
     }
 }

@@ -7,29 +7,29 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
-import com.deividasstr.base.HasViewInjector
-import com.deividasstr.base.InjectingSavedStateViewModelFactory
 import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class NewHostFragment @Inject constructor(
-    private val viewInjector: DispatchingAndroidInjector<View>,
-    private val viewModelFactory: InjectingSavedStateViewModelFactory<NewHostViewModel.Arguments>
-): BaseFragment(), HasViewInjector {
+    private val viewModelAssistedFactory: NewHostViewModel.Factory
+) : BaseFragment() {
 
     private val viewModel: NewHostViewModel by viewModels {
-        viewModelFactory.create(this, NewHostViewModel.Arguments(""))
+        NewHostViewModel.provideFactory(viewModelAssistedFactory, NewHostViewModel.Arguments(""))
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_host_new, container, false)
     }
 
@@ -50,14 +50,10 @@ class NewHostFragment @Inject constructor(
 
     private fun PluginViewCapability.addViewTo(container: ViewGroup) {
         //if (container.children.none { child -> child.tag == pluginType }) { // no views of this type added
-            val view = createView(requireContext())
-            view.tag = pluginType
-            container.addView(view)
+        val view = createView(requireContext())
+        view.tag = pluginType
+        container.addView(view)
         //}
-    }
-
-    override fun viewInjector(): AndroidInjector<View> {
-        return viewInjector
     }
 
     companion object : Args<NewHostFragment> {

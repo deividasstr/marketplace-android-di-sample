@@ -5,32 +5,34 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentFactory
 import com.deividasstr.app.R
 import com.deividasstr.app.databinding.ActivityMainBinding
+import com.deividasstr.base.VintedFragmentCreator
 import com.deividasstr.newfragment.NewFragment
 import com.deividasstr.newhost.NewHostFragment
 import com.deividasstr.oldfragment.OldFragment
 import com.deividasstr.oldhost.OldHostFragment
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
-class MainActivity : FragmentActivity(), HasAndroidInjector {
+@AndroidEntryPoint
+class MainActivity : FragmentActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-    @Inject
     lateinit var navController: NavController
-
-    @Inject
-    lateinit var fragmentFactory: FragmentFactory
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+        val entryPoint = EntryPointAccessors.fromActivity(
+            this,
+            DefaultFragmentFactoryEntryPoint::class.java
+        )
+        val fragmentFactory = entryPoint.getFragmentFactory()
         supportFragmentManager.fragmentFactory = fragmentFactory
+
+        navController = NavController(
+            VintedFragmentCreator(fragmentFactory),
+            this
+        )
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,9 +52,5 @@ class MainActivity : FragmentActivity(), HasAndroidInjector {
         binding.newHostFragment.setOnClickListener {
             navController.goTo(NewHostFragment) { with("inflate2") }
         }
-    }
-
-    override fun androidInjector(): AndroidInjector<Any> {
-        return androidInjector
     }
 }

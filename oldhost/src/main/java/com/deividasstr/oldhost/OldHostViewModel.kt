@@ -7,6 +7,7 @@ import com.deividasstr.plugin.pluginactions.stateprovision.PluginStateConsumer
 import com.deividasstr.plugin.pluginactions.validation.ValidityProvider
 import com.deividasstr.plugin.plugindata.PluginData
 import com.deividasstr.plugin.pluginstatechanges.HostStateChange
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
+@HiltViewModel
 class OldHostViewModel @Inject constructor(
         private val pluginManager: PluginManager
 ) : ViewModel() {

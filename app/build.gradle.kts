@@ -3,7 +3,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
-    id ("com.squareup.anvil")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -32,6 +32,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -48,6 +51,7 @@ dependencies {
     implementation(project(":oldhost"))
     implementation(project(":plugin"))
     implementation(project(":paymentplugin"))
-    kapt ("com.google.dagger:dagger-compiler:2.48.1")
-    kapt ("com.google.dagger:dagger-android-processor:2.48.1")
+    implementation("com.google.dagger:hilt-android:2.48.1")
+
+    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
 }

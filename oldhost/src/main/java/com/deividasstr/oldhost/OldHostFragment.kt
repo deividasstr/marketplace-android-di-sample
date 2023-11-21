@@ -10,24 +10,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.deividasstr.base.BaseFragment
-import com.deividasstr.base.HasViewInjector
 import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class OldHostFragment : BaseFragment(), HasViewInjector {
+@AndroidEntryPoint
+class OldHostFragment : BaseFragment() {
 
-    @Inject
-    lateinit var viewInjector: DispatchingAndroidInjector<View>
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel: OldHostViewModel by viewModels {
-        viewModelFactory
-    }
+    private val viewModel: OldHostViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,9 +49,5 @@ class OldHostFragment : BaseFragment(), HasViewInjector {
         view.tag = pluginType
         container.addView(view)
         //}
-    }
-
-    override fun viewInjector(): AndroidInjector<View> {
-        return viewInjector
     }
 }

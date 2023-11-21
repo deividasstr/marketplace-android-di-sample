@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import javax.inject.Inject
 import javax.inject.Provider
+import javax.inject.Singleton
+
 
 class VintedFragmentFactory @Inject constructor(
         private val provider: Map<Class<out BaseFragment>, @JvmSuppressWildcards Provider<BaseFragment>>

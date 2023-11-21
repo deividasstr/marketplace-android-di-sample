@@ -1,7 +1,5 @@
 package com.deividasstr.paymentplugin
 
-import com.deividasstr.base.PerApplicationScope
-import com.deividasstr.base.PerFragmentScope
 import com.deividasstr.plugin.Plugin
 import com.deividasstr.plugin.PluginType
 import com.deividasstr.plugin.pluginactions.progress.ProgressCapability
@@ -17,9 +15,11 @@ import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
 import com.deividasstr.plugin.pluginactions.validation.ValidatableCapability
 import com.deividasstr.plugin.pluginactions.validation.ValidatableCapabilityImpl
 import com.deividasstr.plugin.pluginactions.validation.ValidityConsumer
+import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@PerFragmentScope
+@Singleton
 class PaymentPlugin @Inject constructor() : Plugin,
     PaymentPluginContext,
     PluginStateCapability<PaymentPluginData> by PluginStateCapabilityImpl(

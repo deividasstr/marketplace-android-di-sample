@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import com.deividasstr.app.R
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
-import com.deividasstr.base.PerActivityScope
 import com.deividasstr.base.VintedFragmentCreator
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import javax.inject.Inject
 
-@PerActivityScope
-class NavController @Inject constructor(
+
+class NavController(
     val vintedFragmentCreator: VintedFragmentCreator,
     val activity: MainActivity,
 ) {

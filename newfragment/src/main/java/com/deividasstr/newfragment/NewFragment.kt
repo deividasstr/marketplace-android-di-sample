@@ -8,19 +8,21 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
-import com.deividasstr.base.InjectingSavedStateViewModelFactory
 import com.deividasstr.newfragment.databinding.FragmentNewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class NewFragment @Inject constructor(
-    private val viewModelFactory: InjectingSavedStateViewModelFactory<NewFragmentViewModel.Arguments>
+    private val viewModelAssistedFactory: NewFragmentViewModel.Factory
 ) : BaseFragment() {
 
     private var _binding: FragmentNewBinding? = null
     private val binding get() = _binding!!
 
+
     private val viewModel: NewFragmentViewModel by viewModels {
-        viewModelFactory.create(this, NewFragmentViewModel.Arguments(""))
+        NewFragmentViewModel.provideFactory(viewModelAssistedFactory, NewFragmentViewModel.Arguments(""))
     }
 
     override fun onCreateView(

@@ -1,13 +1,10 @@
 package com.deividasstr
 
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class App : DaggerApplication() {
+@HiltAndroidApp
+class App : Application() {
 
-    override fun applicationInjector(): AndroidInjector<App> {
-        return DaggerApplicationComponent.factory()
-            .build(this)
-    }
 
 }

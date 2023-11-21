@@ -6,21 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.deividasstr.base.BaseFragment
-import com.deividasstr.base.ViewModelFactory
 import com.deividasstr.oldfragment.databinding.FragmentOldBinding
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OldFragment : BaseFragment() {
 
     private var _binding: FragmentOldBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    internal lateinit var viewModelFactory: ViewModelFactory
-
-    private val viewModel: OldFragmentViewModel by viewModels {
-        viewModelFactory
-    }
+    private val viewModel: OldFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

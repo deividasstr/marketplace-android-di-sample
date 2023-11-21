@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.20" apply false
     id("scabbard.gradle") version "0.5.0"
     id("com.android.library") version "8.2.0-rc03" apply false
-    id("com.squareup.anvil") version "2.4.8" apply false
+    id("com.google.dagger.hilt.android") version "2.48.1" apply false
 }
 
 scabbard {
