@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.deividasstr.di.Args
-import com.deividasstr.di.BaseFragment
-import com.deividasstr.di.HasViewInjector
+import com.deividasstr.base.Args
+import com.deividasstr.base.BaseFragment
+import com.deividasstr.base.HasViewInjector
+import com.deividasstr.base.InjectingSavedStateViewModelFactory
 import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -22,11 +22,11 @@ import javax.inject.Inject
 
 class NewHostFragment @Inject constructor(
     private val viewInjector: DispatchingAndroidInjector<View>,
-    private val viewModelFactory: ViewModelProvider.Factory,
+    private val viewModelFactory: InjectingSavedStateViewModelFactory<NewHostViewModel.Arguments>
 ): BaseFragment(), HasViewInjector {
 
     private val viewModel: NewHostViewModel by viewModels {
-        viewModelFactory
+        viewModelFactory.create(this, NewHostViewModel.Arguments(""))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

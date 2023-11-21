@@ -1,7 +1,7 @@
 package com.deividasstr.oldfragment
 
 import androidx.lifecycle.ViewModel
-import com.deividasstr.di.BaseDependency
+import com.deividasstr.base.BaseDependency
 import javax.inject.Inject
 
 class OldFragmentViewModel @Inject constructor(

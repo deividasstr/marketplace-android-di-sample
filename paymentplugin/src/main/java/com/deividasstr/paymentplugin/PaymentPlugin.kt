@@ -1,8 +1,7 @@
 package com.deividasstr.paymentplugin
 
-import com.deividasstr.di.CheckoutPluginScope
-import com.deividasstr.di.PerActivityScope
-import com.deividasstr.di.PerApplicationScope
+import com.deividasstr.base.PerApplicationScope
+import com.deividasstr.base.PerFragmentScope
 import com.deividasstr.plugin.Plugin
 import com.deividasstr.plugin.PluginType
 import com.deividasstr.plugin.pluginactions.progress.ProgressCapability
@@ -18,12 +17,9 @@ import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
 import com.deividasstr.plugin.pluginactions.validation.ValidatableCapability
 import com.deividasstr.plugin.pluginactions.validation.ValidatableCapabilityImpl
 import com.deividasstr.plugin.pluginactions.validation.ValidityConsumer
-import com.squareup.anvil.annotations.ContributesMultibinding
 import javax.inject.Inject
 
-//@CheckoutPluginScope
-@ContributesMultibinding(PerActivityScope::class, boundType = Plugin::class)
-@ContributesMultibinding(PerActivityScope::class, boundType = PaymentPluginContext::class)
+@PerFragmentScope
 class PaymentPlugin @Inject constructor() : Plugin,
     PaymentPluginContext,
     PluginStateCapability<PaymentPluginData> by PluginStateCapabilityImpl(

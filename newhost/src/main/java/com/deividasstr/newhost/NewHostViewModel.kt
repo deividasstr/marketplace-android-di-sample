@@ -1,12 +1,17 @@
 package com.deividasstr.newhost
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.deividasstr.base.AssistedSavedStateViewModelFactory
 import com.deividasstr.paymentplugin.PaymentPluginData
 import com.deividasstr.plugin.pluginactions.stateprovision.PluginStateConsumer
 import com.deividasstr.plugin.pluginactions.validation.ValidityProvider
 import com.deividasstr.plugin.plugindata.PluginData
 import com.deividasstr.plugin.pluginstatechanges.HostStateChange
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -17,8 +22,10 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-class NewHostViewModel @Inject constructor(
-        private val pluginManager: PluginManager
+class NewHostViewModel @AssistedInject constructor(
+    private val pluginManager: PluginManager,
+    @Assisted private val arguments: Arguments,
+    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(NewHostState(listOf()))
@@ -79,5 +86,15 @@ class NewHostViewModel @Inject constructor(
     fun scrollToValidation() {
         // Make first plugin scroll to itself
         pluginValidityConsumers.first { !it.isValidFlow.value }.scrollToValidation()
+    }
+
+    data class Arguments(val login: String?)
+
+    @AssistedFactory
+    interface Factory : AssistedSavedStateViewModelFactory<Arguments, NewHostViewModel> {
+        override fun create(
+            arguments: Arguments,
+            savedStateHandle: SavedStateHandle
+        ): NewHostViewModel
     }
 }

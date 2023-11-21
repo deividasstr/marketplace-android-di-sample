@@ -1,11 +1,10 @@
 package com.deividasstr.newfragment
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import com.deividasstr.di.AssistedSavedStateViewModelFactory
-import com.deividasstr.di.BaseFragment
-import com.deividasstr.di.FragmentKey
-import com.deividasstr.di.ViewModelKey
+import com.deividasstr.base.AssistedSavedStateViewModelFactory
+import com.deividasstr.base.BaseFragment
+import com.deividasstr.base.FragmentKey
+import com.deividasstr.base.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

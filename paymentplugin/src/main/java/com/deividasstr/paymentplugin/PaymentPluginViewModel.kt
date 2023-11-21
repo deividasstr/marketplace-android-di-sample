@@ -20,8 +20,13 @@ class PaymentPluginViewModel @Inject constructor(
     val state = paymentPluginContext.hostState
         .onEach { paymentPluginContext.setValidity(it.isValid()) } // let the host know that content is valid or not
         .map {
+            val stateText = if (it.data.isNotEmpty()) {
+                    "Payment plugin vm, con $paymentPluginContext, data ${it.data}"
+                } else {
+                    ""
+                }
             // to plugin ui state
-            PaymentPluginState("Payment plugin vm, con $paymentPluginContext, data ${it.data}")
+            PaymentPluginState(stateText)
         }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,

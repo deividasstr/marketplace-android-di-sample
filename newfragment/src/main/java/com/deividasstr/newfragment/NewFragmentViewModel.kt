@@ -2,8 +2,8 @@ package com.deividasstr.newfragment
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.deividasstr.di.AssistedSavedStateViewModelFactory
-import com.deividasstr.di.BaseDependency
+import com.deividasstr.base.AssistedSavedStateViewModelFactory
+import com.deividasstr.base.BaseDependency
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject

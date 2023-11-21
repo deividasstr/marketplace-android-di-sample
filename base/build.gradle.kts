@@ -6,21 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.deividasstr.di"
+    namespace = "com.deividasstr.base"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 34
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -28,10 +18,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
-    }
-    kapt {
-        generateStubs = true
-        correctErrorTypes = true
     }
 }
 

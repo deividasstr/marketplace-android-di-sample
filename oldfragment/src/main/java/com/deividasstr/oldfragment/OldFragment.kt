@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.deividasstr.di.BaseFragment
-import com.deividasstr.di.ViewModelFactory
+import com.deividasstr.base.BaseFragment
+import com.deividasstr.base.ViewModelFactory
 import com.deividasstr.oldfragment.databinding.FragmentOldBinding
 import javax.inject.Inject
 

@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.deividasstr.di.Args
-import com.deividasstr.di.BaseFragment
-import com.deividasstr.di.InjectingSavedStateViewModelFactory
+import com.deividasstr.base.Args
+import com.deividasstr.base.BaseFragment
+import com.deividasstr.base.InjectingSavedStateViewModelFactory
 import com.deividasstr.newfragment.databinding.FragmentNewBinding
 import javax.inject.Inject
 

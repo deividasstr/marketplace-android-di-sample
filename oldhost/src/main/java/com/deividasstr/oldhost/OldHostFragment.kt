@@ -9,8 +9,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.deividasstr.di.BaseFragment
-import com.deividasstr.di.HasViewInjector
+import com.deividasstr.base.BaseFragment
+import com.deividasstr.base.HasViewInjector
 import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector

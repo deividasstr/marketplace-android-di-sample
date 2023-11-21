@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
 
 plugins {
     id("com.android.application")
@@ -8,14 +7,9 @@ plugins {
 }
 
 android {
-    namespace = "com.deividasstr.vinted_di"
+    namespace = "com.deividasstr.app"
     compileSdk = 34
 
-
-    kapt {
-        correctErrorTypes = true
-        generateStubs = true
-    }
     defaultConfig {
         applicationId = "com.deividasstr.vinted_di"
         minSdk = 34
@@ -44,7 +38,6 @@ android {
         }
     }
 }
-
 
 dependencies {
     implementation("androidx.core:core-ktx:1.12.0")

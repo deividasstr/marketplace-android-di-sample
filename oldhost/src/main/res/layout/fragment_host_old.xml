@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Old host"
+        android:text="Old host \n (if no text is seen below, plugin and host are of different scopes. \n If you see text, click on this button again, if the text changes, it means that plugin and host are scoped the same, but new fragment initiation re-creates both (best outcome). \n If the text hasn't changed, host and plugin are scoped to a scope larger than the feature scope.)"
         />
 
 </LinearLayout>

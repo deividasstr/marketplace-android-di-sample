@@ -1,11 +1,7 @@
 package com.deividasstr.oldfragment
 
 import androidx.lifecycle.ViewModel
-import com.deividasstr.di.PerActivityScope
-import com.deividasstr.di.PerFragmentScope
-import com.deividasstr.di.ViewModelKey
-import com.squareup.anvil.annotations.ContributesTo
-import com.squareup.anvil.annotations.compat.MergeModules
+import com.deividasstr.base.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

@@ -11,7 +11,7 @@ import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.deividasstr.di.ViewInjection
+import com.deividasstr.base.ViewInjection
 import com.deividasstr.paymentplugin.databinding.ViewPluginPaymentBinding
 import kotlinx.coroutines.launch
 import javax.inject.Inject
