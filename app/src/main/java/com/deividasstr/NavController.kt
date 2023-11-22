@@ -6,7 +6,6 @@ import com.deividasstr.app.R
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
 import com.deividasstr.base.PerActivityScope
-import com.deividasstr.base.VintedFragmentCreator
 import javax.inject.Inject
 
 @PerActivityScope

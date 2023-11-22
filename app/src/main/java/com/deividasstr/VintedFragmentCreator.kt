@@ -1,7 +1,9 @@
-package com.deividasstr.base
+package com.deividasstr
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentFactory
+import com.deividasstr.base.Args
+import com.deividasstr.base.BaseFragment
 import javax.inject.Inject
 
 /**
@@ -11,7 +13,7 @@ import javax.inject.Inject
  *  vintedFragmentCreator.create(Foo) { with(a) }
  * ```
  */
-class VintedFragmentCreator @Inject constructor(@PublishedApi internal val fragmentFactory: FragmentFactory) {
+class VintedFragmentCreator @Inject constructor(@PublishedApi internal val fragmentFactory: VintedFragmentFactory) {
 
     @PublishedApi
     internal val classLoader = BaseFragment::class.java.classLoader!!

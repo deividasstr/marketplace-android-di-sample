@@ -1,5 +1,6 @@
 package com.deividasstr.paymentplugin
 
+import com.deividasstr.base.CheckoutPluginScope
 import com.deividasstr.base.PerApplicationScope
 import com.deividasstr.base.PerFragmentScope
 import com.deividasstr.plugin.Plugin
@@ -19,7 +20,7 @@ import com.deividasstr.plugin.pluginactions.validation.ValidatableCapabilityImpl
 import com.deividasstr.plugin.pluginactions.validation.ValidityConsumer
 import javax.inject.Inject
 
-@PerFragmentScope
+@CheckoutPluginScope
 class PaymentPlugin @Inject constructor() : Plugin,
     PaymentPluginContext,
     PluginStateCapability<PaymentPluginData> by PluginStateCapabilityImpl(
