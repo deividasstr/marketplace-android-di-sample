@@ -7,7 +7,6 @@ import dagger.android.DispatchingAndroidInjector
 import javax.inject.Inject
 import javax.inject.Provider
 
-//As per https://proandroiddev.com/constructor-injection-into-fragments-with-respect-of-scopes-311c0258d678
 class VintedFragmentFactory @Inject constructor(
     private val androidInjector: DispatchingAndroidInjector<Any>
 ) : FragmentFactory() {
@@ -20,11 +19,11 @@ class VintedFragmentFactory @Inject constructor(
         val clazz = loadFragmentClass(classLoader, className)
         return providers[clazz]?.get() ?: super.instantiate(classLoader, className)
     }
+}
 
-    class FragmentProviders {
+class FragmentProviders {
 
-        @Inject
-        lateinit var fragmentProviders: MutableMap<Class<out BaseFragment>, Provider<BaseFragment>>
-        operator fun get(clazz: Class<out Fragment>) = fragmentProviders[clazz]
-    }
+    @Inject
+    lateinit var fragmentProviders: MutableMap<Class<out BaseFragment>, Provider<BaseFragment>>
+    operator fun get(clazz: Class<out Fragment>) = fragmentProviders[clazz]
 }

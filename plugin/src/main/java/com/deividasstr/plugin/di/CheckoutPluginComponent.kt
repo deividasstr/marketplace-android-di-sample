@@ -1,13 +1,14 @@
 package com.deividasstr.plugin.di
 
 import com.deividasstr.base.CheckoutPluginScope
+import com.deividasstr.base.PerActivityScope
 import com.deividasstr.base.PerApplicationScope
 import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.anvil.annotations.MergeSubcomponent
 import dagger.Module
 import dagger.Subcomponent
 
-@MergeSubcomponent(scope = PerApplicationScope::class)
+@MergeSubcomponent(scope = PerActivityScope::class)
 interface CheckoutPluginComponent {
 
     @Subcomponent.Factory

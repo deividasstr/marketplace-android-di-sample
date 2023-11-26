@@ -12,7 +12,7 @@ scabbard {
     failOnError = true
     enabled = true
     outputFormat = "svg"
-    fullBindingGraphValidation = false
+    fullBindingGraphValidation = true
 }
 
 allprojects {

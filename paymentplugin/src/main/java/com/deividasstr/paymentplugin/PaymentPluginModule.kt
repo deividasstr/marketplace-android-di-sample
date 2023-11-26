@@ -1,6 +1,7 @@
 package com.deividasstr.paymentplugin
 
 import androidx.lifecycle.ViewModel
+import com.deividasstr.base.CheckoutPluginScope
 import com.deividasstr.base.PerActivityScope
 import com.deividasstr.base.PerApplicationScope
 import com.deividasstr.base.ViewModelKey
@@ -9,6 +10,8 @@ import com.deividasstr.plugin.PluginType
 import com.squareup.anvil.annotations.ContributesBinding
 import com.squareup.anvil.annotations.ContributesMultibinding
 import com.squareup.anvil.annotations.ContributesTo
+import com.squareup.anvil.annotations.MergeSubcomponent
+import com.squareup.anvil.annotations.compat.MergeModules
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -17,6 +20,7 @@ import dagger.multibindings.IntoMap
 import dagger.multibindings.IntoSet
 import javax.inject.Inject
 
+//@ContributesTo(CheckoutPluginScope::class)
 @Module(includes = [PaymentViewModule::class])
 abstract class PaymentPluginModule {
 
