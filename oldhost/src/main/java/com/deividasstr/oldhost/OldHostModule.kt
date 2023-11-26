@@ -1,7 +1,8 @@
 package com.deividasstr.oldhost
 
 import androidx.lifecycle.ViewModel
-import com.deividasstr.base.CheckoutPluginScope
+import com.deividasstr.base.FragmentScope
+import com.deividasstr.base.SingleIn
 import com.deividasstr.base.ViewModelKey
 import com.deividasstr.paymentplugin.PaymentPluginModule
 import dagger.Binds
@@ -12,7 +13,7 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class OldHostModule {
 
-    @CheckoutPluginScope
+    @SingleIn(FragmentScope::class)
     @ContributesAndroidInjector(modules = [OldHostInternalModule::class, PaymentPluginModule::class])
     abstract fun contributesOldHostFragment(): OldHostFragment
 

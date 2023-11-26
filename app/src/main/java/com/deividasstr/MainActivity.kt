@@ -29,6 +29,7 @@ class MainActivity : FragmentActivity(), HasAndroidInjector {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
+
         supportFragmentManager.fragmentFactory = fragmentFactory
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

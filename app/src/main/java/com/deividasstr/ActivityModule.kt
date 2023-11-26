@@ -1,7 +1,8 @@
 package com.deividasstr
 
-import com.deividasstr.base.PerActivityScope
-import com.deividasstr.base.PerApplicationScope
+import com.deividasstr.base.ActivityScope
+import com.deividasstr.base.ApplicationScope
+import com.deividasstr.base.SingleIn
 import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.anvil.annotations.MergeSubcomponent
 import dagger.Binds
@@ -11,26 +12,8 @@ import dagger.android.AndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
-/*@Module(*//*subcomponents = [DagActivityComponent::class]*//*)
-abstract class ActivityModule {
-
-     @PerActivityScope
-     @ContributesAndroidInjector(
-         modules = [
-             ViewModelModule::class,
-             BaseFragmentModule::class,
-             FragmentModule::class,
-         ]
-     )
-     abstract fun contributeActivity(): MainActivity
-}*/
-
-@Module(
-    subcomponents = [
-        MainActivitySubcomponent::class,
-    ]
-)
-@ContributesTo(PerApplicationScope::class)
+@ContributesTo(ApplicationScope::class)
+@Module
 abstract class ActivityModule {
 
     @Binds
@@ -42,10 +25,10 @@ abstract class ActivityModule {
 }
 
 @MergeSubcomponent(
-    modules = [ViewModelModule::class, BaseFragmentModule::class, FragmentModule::class],
-    scope = PerActivityScope::class
+    modules = [ViewModelModule::class],
+    scope = ActivityScope::class
 )
-@PerActivityScope
+@SingleIn(ActivityScope::class)
 interface MainActivitySubcomponent : AndroidInjector<MainActivity> {
     @Subcomponent.Factory
     interface Factory : AndroidInjector.Factory<MainActivity>

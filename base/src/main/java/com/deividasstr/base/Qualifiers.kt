@@ -3,21 +3,9 @@ package com.deividasstr.base
 import javax.inject.Scope
 import kotlin.reflect.KClass
 
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class PerFragmentScope
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class PerActivityScope
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class PerApplicationScope
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class CheckoutPluginScope
+abstract class ActivityScope private constructor()
+abstract class ApplicationScope private constructor()
+abstract class FragmentScope private constructor()
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
