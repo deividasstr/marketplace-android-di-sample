@@ -2,7 +2,7 @@ package com.deividasstr.oldhost
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.deividasstr.paymentplugin.PaymentPluginData
+import com.deividasstr.plugin.plugindata.PaymentPluginData
 import com.deividasstr.plugin.pluginactions.stateprovision.PluginStateConsumer
 import com.deividasstr.plugin.pluginactions.validation.ValidityProvider
 import com.deividasstr.plugin.plugindata.PluginData

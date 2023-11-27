@@ -1,8 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id ("com.squareup.anvil")
-    kotlin("kapt")
+    //id ("com.squareup.anvil")
+    //kotlin("kapt")
 }
 
 android {
@@ -23,10 +23,7 @@ android {
         jvmTarget = "17"
     }
 
-    kapt {
-        correctErrorTypes = true
-        //generateStubs = true
-    }
+
 }
 
 dependencies {
@@ -34,6 +31,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation(project(":base"))
-    kapt ("com.google.dagger:dagger-compiler:2.48.1")
-    kapt ("com.google.dagger:dagger-android-processor:2.48.1")
+    //kapt ("com.google.dagger:dagger-compiler:2.48.1")
+    //kapt ("com.google.dagger:dagger-android-processor:2.48.1")
 }

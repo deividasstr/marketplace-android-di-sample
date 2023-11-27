@@ -14,7 +14,7 @@ import dagger.Module
         NewFragmentModule::class,
         OldHostModule::class,
         OldFragmentModule::class,
-        NewHostModule::class
+        //NewHostModule::class
     ]
 )
 @ContributesTo(ActivityScope::class)

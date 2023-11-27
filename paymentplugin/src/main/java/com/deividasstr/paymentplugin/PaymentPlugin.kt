@@ -17,6 +17,7 @@ import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
 import com.deividasstr.plugin.pluginactions.validation.ValidatableCapability
 import com.deividasstr.plugin.pluginactions.validation.ValidatableCapabilityImpl
 import com.deividasstr.plugin.pluginactions.validation.ValidityConsumer
+import com.deividasstr.plugin.plugindata.PaymentPluginData
 import javax.inject.Inject
 
 @SingleIn(FragmentScope::class)
