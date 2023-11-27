@@ -2,6 +2,7 @@ package com.deividasstr
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentFactory
 import com.deividasstr.app.R
 import com.deividasstr.app.databinding.ActivityMainBinding
 import com.deividasstr.newfragment.NewFragment
@@ -25,7 +26,7 @@ class MainActivity : FragmentActivity(), HasAndroidInjector {
     lateinit var navController: NavController
 
     @Inject
-    lateinit var fragmentFactory: VintedFragmentFactory
+    lateinit var fragmentFactory: FragmentFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

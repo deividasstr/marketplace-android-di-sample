@@ -13,7 +13,7 @@ import javax.inject.Inject
  *  vintedFragmentCreator.create(Foo) { with(a) }
  * ```
  */
-class VintedFragmentCreator @Inject constructor(@PublishedApi internal val fragmentFactory: VintedFragmentFactory) {
+class VintedFragmentCreator @Inject constructor(@PublishedApi internal val fragmentFactory: FragmentFactory) {
 
     @PublishedApi
     internal val classLoader = BaseFragment::class.java.classLoader!!

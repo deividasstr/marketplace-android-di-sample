@@ -1,29 +1,17 @@
 package com.deividasstr
 
-
 import com.deividasstr.base.ActivityScope
 import com.deividasstr.base.FragmentScope
 import com.deividasstr.base.SingleIn
 import com.deividasstr.paymentplugin.PaymentPluginModule
 import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.anvil.annotations.MergeSubcomponent
-import dagger.Binds
 import dagger.Module
 import dagger.Subcomponent
-import dagger.android.AndroidInjector
-import dagger.multibindings.ClassKey
-import dagger.multibindings.IntoMap
 
 @ContributesTo(ActivityScope::class)
 @Module(subcomponents = [FragmentProvidersSubcomponent::class])
-abstract class BaseFragmentModule {
-    @Binds
-    @IntoMap
-    @ClassKey(FragmentProviders::class)
-    abstract fun bindAndroidInjectorFactory(
-        builder: FragmentProvidersSubcomponent.Factory
-    ): AndroidInjector.Factory<*>
-}
+abstract class BaseFragmentModule
 
 @SingleIn(FragmentScope::class)
 @MergeSubcomponent(
@@ -34,8 +22,12 @@ abstract class BaseFragmentModule {
 // But it requires for factory to not extend AndroidInjector.Factory
     modules = [PaymentPluginModule::class]
 )
-interface FragmentProvidersSubcomponent : AndroidInjector<FragmentProviders> {
-    @Subcomponent.Factory
-    interface Factory : AndroidInjector.Factory<FragmentProviders>
-}
+interface FragmentProvidersSubcomponent {
 
+    fun getFragmentMap(): FragmentMap
+
+    @Subcomponent.Factory
+    interface Factory {
+        fun create(): FragmentProvidersSubcomponent
+    }
+}
