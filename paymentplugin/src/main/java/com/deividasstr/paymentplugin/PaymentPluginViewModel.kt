@@ -3,6 +3,7 @@ package com.deividasstr.paymentplugin
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.deividasstr.plugin.pluginactions.validation.ValidationEvent
+import com.deividasstr.plugin.plugindata.PaymentPluginData
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow

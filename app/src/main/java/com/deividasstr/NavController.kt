@@ -3,13 +3,13 @@ package com.deividasstr
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.deividasstr.app.R
+import com.deividasstr.base.ActivityScope
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
-import com.deividasstr.base.PerActivityScope
-import com.deividasstr.base.VintedFragmentCreator
+import com.deividasstr.base.SingleIn
 import javax.inject.Inject
 
-@PerActivityScope
+@SingleIn(ActivityScope::class)
 class NavController @Inject constructor(
     val vintedFragmentCreator: VintedFragmentCreator,
     val activity: MainActivity,

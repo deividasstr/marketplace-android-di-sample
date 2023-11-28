@@ -14,13 +14,6 @@ class PluginManager @Inject constructor(
         private val plugins: @JvmSuppressWildcards Set<Plugin>
 ) {
 
-    init {
-        println("AAA PM list of plugins: $plugins")
-        plugins.forEach {
-            println("AAA PM plugin: $it")
-        }
-    }
-
     fun getPluginStateProvider(): List<PluginStateConsumer<out PluginData>> {
         return plugins.toList().filterIsInstance<PluginStateConsumer<out PluginData>>()
     }

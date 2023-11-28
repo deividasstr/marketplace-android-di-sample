@@ -4,9 +4,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.deividasstr.base.AssistedSavedStateViewModelFactory
-import com.deividasstr.paymentplugin.PaymentPluginData
 import com.deividasstr.plugin.pluginactions.stateprovision.PluginStateConsumer
 import com.deividasstr.plugin.pluginactions.validation.ValidityProvider
+import com.deividasstr.plugin.plugindata.PaymentPluginData
 import com.deividasstr.plugin.plugindata.PluginData
 import com.deividasstr.plugin.pluginstatechanges.HostStateChange
 import dagger.assisted.Assisted
@@ -20,7 +20,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
-import javax.inject.Inject
 
 class NewHostViewModel @AssistedInject constructor(
     private val pluginManager: PluginManager,

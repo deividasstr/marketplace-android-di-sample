@@ -1,4 +1,4 @@
-package com.deividasstr.paymentplugin
+package com.deividasstr.plugin.plugindata
 
 import com.deividasstr.plugin.PluginType
 import com.deividasstr.plugin.plugindata.PluginData
