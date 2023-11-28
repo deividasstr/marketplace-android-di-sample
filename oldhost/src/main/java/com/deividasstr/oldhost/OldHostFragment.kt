@@ -44,7 +44,6 @@ class OldHostFragment : BaseFragment(), HasViewInjector {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { uiState ->
-                    println("Collecting state, $uiState")
                     uiState.pluginViewCapabilities.forEach { viewProvider ->
                         viewProvider.addViewTo(container)
                     }
@@ -58,7 +57,6 @@ class OldHostFragment : BaseFragment(), HasViewInjector {
         val view = createView(requireContext())
         view.tag = pluginType
         container.addView(view)
-        println("Added view")
         //}
     }
 
