@@ -7,10 +7,6 @@ import com.squareup.anvil.annotations.ContributesSubcomponent
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Subcomponent
 
-/*@ContributesTo(ActivityScope::class)
-@Module(subcomponents = [FragmentProvidersSubcomponent::class])
-abstract class BaseFragmentModule*/
-
 @SingleIn(FragmentScope::class)
 @ContributesSubcomponent(scope = FragmentScope::class, parentScope = ActivityScope::class)
 interface FragmentSubcomponent {
