@@ -1,9 +1,8 @@
 package com.deividasstr.plugin
 
 enum class PluginType {
-    UNKNOWN,
-    CHECKOUT,
     PAYMENT,
+    CHECKOUT,
     SHIPPING,
     SUMMARY
 }

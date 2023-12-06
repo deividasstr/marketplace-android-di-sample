@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
     id ("com.squareup.anvil")
 }
 
@@ -19,6 +18,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    anvil {
+        generateDaggerFactories = true
+    }
 }
 
 dependencies {
@@ -29,8 +31,6 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     api ("com.google.dagger:dagger:2.48.1")
-    kapt ("com.google.dagger:dagger-compiler:2.48.1")
     api ("com.google.dagger:dagger-android-support:2.48.1")
-    kapt ("com.google.dagger:dagger-android-processor:2.48.1")
     api ("javax.inject:javax.inject:1")
 }

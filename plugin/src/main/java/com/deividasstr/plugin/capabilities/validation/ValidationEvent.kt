@@ -1,4 +1,4 @@
-package com.deividasstr.plugin.pluginactions.validation
+package com.deividasstr.plugin.capabilities.validation
 
 sealed class ValidationEvent {
     object ScrollToValidation : ValidationEvent()

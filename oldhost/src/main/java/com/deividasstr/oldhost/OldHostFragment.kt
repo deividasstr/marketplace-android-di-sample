@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.deividasstr.base.BaseFragment
 import com.deividasstr.base.HasViewInjector
-import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
+import com.deividasstr.plugin.capabilities.ui.PluginViewCapability
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import kotlinx.coroutines.launch
@@ -44,6 +44,7 @@ class OldHostFragment : BaseFragment(), HasViewInjector {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { uiState ->
+                    container.removeAllViews()
                     uiState.pluginViewCapabilities.forEach { viewProvider ->
                         viewProvider.addViewTo(container)
                     }
@@ -53,11 +54,8 @@ class OldHostFragment : BaseFragment(), HasViewInjector {
     }
 
     private fun PluginViewCapability.addViewTo(container: ViewGroup) {
-        //if (container.children.none { child -> child.tag == pluginType }) { // no views of this type added
-        val view = createView(requireContext())
-        view.tag = pluginType
+        val view = creator(requireContext())
         container.addView(view)
-        //}
     }
 
     override fun viewInjector(): AndroidInjector<View> {

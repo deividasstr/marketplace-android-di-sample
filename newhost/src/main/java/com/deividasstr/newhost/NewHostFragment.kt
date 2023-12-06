@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
 import com.deividasstr.base.HasViewInjector
 import com.deividasstr.base.InjectingSavedStateViewModelFactory
-import com.deividasstr.plugin.pluginactions.ui.PluginViewCapability
+import com.deividasstr.plugin.capabilities.ui.PluginViewCapability
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import kotlinx.coroutines.launch
@@ -23,13 +22,17 @@ import javax.inject.Inject
 class NewHostFragment @Inject constructor(
     private val viewInjector: DispatchingAndroidInjector<View>,
     private val viewModelFactory: InjectingSavedStateViewModelFactory<NewHostViewModel.Arguments>
-): BaseFragment(), HasViewInjector {
+) : BaseFragment(), HasViewInjector {
 
     private val viewModel: NewHostViewModel by viewModels {
         viewModelFactory.create(this, NewHostViewModel.Arguments(""))
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_host_new, container, false)
     }
 
@@ -40,20 +43,17 @@ class NewHostFragment @Inject constructor(
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { uiState ->
-                    uiState.pluginViewCapabilities.forEach { viewProvider ->
-                        viewProvider.addViewTo(container)
-                    }
+                    container.removeAllViews()
+                    uiState.pluginViewCapabilities
+                        .forEach { viewProvider -> viewProvider.addViewTo(container) }
                 }
             }
         }
     }
 
     private fun PluginViewCapability.addViewTo(container: ViewGroup) {
-        //if (container.children.none { child -> child.tag == pluginType }) { // no views of this type added
-            val view = createView(requireContext())
-            view.tag = pluginType
-            container.addView(view)
-        //}
+        val view = creator(container.context)
+        container.addView(view)
     }
 
     override fun viewInjector(): AndroidInjector<View> {

@@ -12,7 +12,7 @@ typealias FragmentMap = Map<Class<out BaseFragment>, @JvmSuppressWildcards Provi
 
 @ContributesBinding(ActivityScope::class)
 class VintedFragmentFactory @Inject constructor(
-    private val fragmentComponentFactory: FragmentProvidersSubcomponent.Factory
+    private val fragmentComponentFactory: FragmentSubcomponent.Factory
 ) : FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {

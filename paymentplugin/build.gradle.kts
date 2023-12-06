@@ -29,6 +29,15 @@ android {
         correctErrorTypes = true
         generateStubs = true
     }
+    // https://github.com/square/anvil/issues/693#issuecomment-1744013947
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        // Kapt tasks are also KotlinCompile tasks, but we don't care about them
+        if (this !is org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs) {
+            val anvilSrcGenDir = layout.buildDirectory.dir(sourceSetName.map{ "anvil/src-gen-$it/anvil" })
+            // adds the Anvil directory to the task's outputs
+            this.outputs.dir(anvilSrcGenDir)
+        }
+    }
 }
 
 dependencies {

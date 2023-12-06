@@ -1,4 +1,4 @@
-package com.deividasstr.plugin.pluginactions.progress
+package com.deividasstr.plugin.capabilities.progress
 
 import kotlinx.coroutines.flow.StateFlow
 

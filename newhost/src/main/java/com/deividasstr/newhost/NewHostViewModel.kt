@@ -4,8 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.deividasstr.base.AssistedSavedStateViewModelFactory
-import com.deividasstr.plugin.pluginactions.stateprovision.PluginStateConsumer
-import com.deividasstr.plugin.pluginactions.validation.ValidityProvider
+import com.deividasstr.plugin.capabilities.stateprovision.PluginStateConsumer
+import com.deividasstr.plugin.capabilities.validation.ValidityProvider
 import com.deividasstr.plugin.plugindata.PaymentPluginData
 import com.deividasstr.plugin.plugindata.PluginData
 import com.deividasstr.plugin.pluginstatechanges.HostStateChange

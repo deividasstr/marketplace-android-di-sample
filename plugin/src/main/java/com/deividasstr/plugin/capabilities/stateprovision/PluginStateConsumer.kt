@@ -1,4 +1,4 @@
-package com.deividasstr.plugin.pluginactions.stateprovision
+package com.deividasstr.plugin.capabilities.stateprovision
 
 import com.deividasstr.plugin.plugindata.PluginData
 

@@ -1,7 +1,6 @@
 package com.deividasstr.paymentplugin
 
 import androidx.lifecycle.ViewModel
-import com.deividasstr.base.ActivityScope
 import com.deividasstr.base.FragmentScope
 import com.deividasstr.base.ViewModelKey
 import com.deividasstr.plugin.Plugin
@@ -12,19 +11,19 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 import dagger.multibindings.IntoSet
 
-@ContributesTo(FragmentScope::class)
 @Module(includes = [PaymentViewModule::class])
 abstract class PaymentPluginModule {
 
     @Binds
-    abstract fun bindPaymentPluginSide(pluginManager: PaymentPlugin): PaymentPluginContext
+    abstract fun bindPaymentPluginSide(pluginManager: PaymentPluginImpl): PaymentPlugin
 
     @Binds
     @IntoSet
-    abstract fun bindPaymentPlugin(pluginManager: PaymentPlugin): Plugin
+    abstract fun bindPaymentPlugin(pluginManager: PaymentPluginImpl): Plugin
 }
 
 @Module
+@ContributesTo(FragmentScope::class)
 abstract class PaymentViewModule {
 
     @ContributesAndroidInjector(modules = [PaymentPluginViewModule::class])

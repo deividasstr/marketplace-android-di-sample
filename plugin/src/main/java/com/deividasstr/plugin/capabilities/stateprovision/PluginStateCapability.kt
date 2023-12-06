@@ -1,14 +1,14 @@
-package com.deividasstr.plugin.pluginactions.stateprovision
+package com.deividasstr.plugin.capabilities.stateprovision
 
+import com.deividasstr.plugin.capabilities.PluginCapability
 import com.deividasstr.plugin.plugindata.PluginData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-interface PluginStateCapability<T : PluginData> : PluginStateProvider<T>, PluginStateConsumer<T>
-
-class PluginStateCapabilityImpl<T : PluginData>(override val initialPluginData: T) :
-    PluginStateCapability<T> {
+class PluginStateCapability<T : PluginData>(
+    override val initialPluginData: T
+) : PluginStateProvider<T>, PluginStateConsumer<T>, PluginCapability {
 
     private val _state = MutableStateFlow(initialPluginData)
     override val hostState: StateFlow<T> = _state.asStateFlow()

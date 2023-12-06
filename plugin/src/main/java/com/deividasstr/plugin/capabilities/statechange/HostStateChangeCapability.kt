@@ -1,14 +1,14 @@
-package com.deividasstr.plugin.pluginactions.statechange
+package com.deividasstr.plugin.capabilities.statechange
 
+import com.deividasstr.plugin.capabilities.PluginCapability
 import com.deividasstr.plugin.pluginstatechanges.HostStateChange
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
-interface HostStateChangeCapability<T : HostStateChange> : StateChangeProvider<T>,
-    StateChangeConsumer<T>
-
-class HostStateChangeCapabilityImpl<T : HostStateChange> : HostStateChangeCapability<T> {
+class HostStateChangeCapability<T : HostStateChange> : StateChangeProvider<T>,
+    StateChangeConsumer<T>,
+    PluginCapability {
 
     private val _stateChangeFlow = MutableSharedFlow<T>(extraBufferCapacity = 5)
 

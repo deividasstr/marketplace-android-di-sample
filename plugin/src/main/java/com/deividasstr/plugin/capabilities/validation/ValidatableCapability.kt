@@ -1,5 +1,6 @@
-package com.deividasstr.plugin.pluginactions.validation
+package com.deividasstr.plugin.capabilities.validation
 
+import com.deividasstr.plugin.capabilities.PluginCapability
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -7,9 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-interface ValidatableCapability : ValidityConsumer, ValidityProvider
-
-class ValidatableCapabilityImpl : ValidatableCapability {
+class ValidatableCapability : ValidityConsumer, ValidityProvider, PluginCapability {
 
     private val _state = MutableStateFlow(false)
     private val _validations = MutableSharedFlow<ValidationEvent>(extraBufferCapacity = 5)
