@@ -1,20 +1,14 @@
 package com.deividasstr.paymentplugin
 
-import android.view.View
 import com.deividasstr.base.FragmentScope
 import com.deividasstr.base.SingleIn
 import com.deividasstr.plugin.Plugin
 import com.deividasstr.plugin.PluginType
-import com.deividasstr.plugin.capabilities.PluginCapability
 import com.deividasstr.plugin.capabilities.progress.ProgressCapability
-import com.deividasstr.plugin.capabilities.progress.ProgressConsumer
 import com.deividasstr.plugin.capabilities.statechange.HostStateChangeCapability
-import com.deividasstr.plugin.capabilities.statechange.StateChangeConsumer
 import com.deividasstr.plugin.capabilities.stateprovision.PluginStateCapability
-import com.deividasstr.plugin.capabilities.stateprovision.PluginStateProvider
 import com.deividasstr.plugin.capabilities.ui.PluginViewCapability
 import com.deividasstr.plugin.capabilities.validation.ValidatableCapability
-import com.deividasstr.plugin.capabilities.validation.ValidityConsumer
 import com.deividasstr.plugin.plugindata.PaymentPluginData
 import com.squareup.anvil.annotations.ContributesBinding
 import com.squareup.anvil.annotations.ContributesMultibinding

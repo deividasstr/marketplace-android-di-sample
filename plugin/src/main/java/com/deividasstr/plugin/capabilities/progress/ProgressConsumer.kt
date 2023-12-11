@@ -1,7 +1,5 @@
 package com.deividasstr.plugin.capabilities.progress
 
-import com.deividasstr.plugin.PluginContext
-
-interface ProgressConsumer : PluginContext {
+interface ProgressConsumer {
     fun setProgress(show: Boolean)
 }

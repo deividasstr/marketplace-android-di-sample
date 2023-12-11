@@ -1,8 +1,7 @@
 package com.deividasstr.plugin.capabilities.statechange
 
-import com.deividasstr.plugin.PluginContext
 import com.deividasstr.plugin.pluginstatechanges.HostStateChange
 
-interface StateChangeConsumer<T : HostStateChange> : PluginContext {
+interface StateChangeConsumer<T : HostStateChange> {
     fun onStateChange(stateChange: T)
 }
