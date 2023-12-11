@@ -14,15 +14,16 @@ import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 class PaymentPluginViewModel @Inject constructor(
-    private val paymentPluginContext: PaymentPluginContext,
+    private val paymentPlugin: PaymentPlugin,
 ) : ViewModel() {
 
     // Generate UI state - react to the host state
-    val state = paymentPluginContext.hostState
-        .onEach { paymentPluginContext.setValidity(it.isValid()) } // let the host know that content is valid or not
+    val state = paymentPlugin.stateCapability.hostState
+        // let the host know that content is valid or not
+        .onEach { paymentPlugin.validatableCapability.setValidity(it.isValid()) }
         .map {
             val stateText = if (it.data.isNotEmpty()) {
-                    "Payment plugin vm, con $paymentPluginContext, data ${it.data}"
+                    "Payment plugin vm, con $paymentPlugin, data ${it.data}"
                 } else {
                     ""
                 }
@@ -40,7 +41,7 @@ class PaymentPluginViewModel @Inject constructor(
 
     init {
         // React to host validation events
-        paymentPluginContext.validationEvents.onEach { event ->
+        paymentPlugin.validatableCapability.validationEvents.onEach { event ->
             when (event) {
                 ValidationEvent.ScrollToValidation -> _events.tryEmit(PaymentPluginUiEvents.ScrollToValidation)
                 ValidationEvent.ShowValidation -> _events.tryEmit(PaymentPluginUiEvents.ShowValidation)
@@ -50,13 +51,13 @@ class PaymentPluginViewModel @Inject constructor(
 
     fun paymentChanged(payment: String) {
         // Update host state
-        paymentPluginContext.onStateChange(PaymentHostStateChange(payment))
+        paymentPlugin.hostStateChangeCapability.onStateChange(PaymentHostStateChange(payment))
     }
 
     fun doSomethingLong() {
-        paymentPluginContext.setProgress(show = true)
+        paymentPlugin.progressCapability.setProgress(show = true)
         // do something
-        paymentPluginContext.setProgress(show = false)
+        paymentPlugin.progressCapability.setProgress(show = false)
     }
 
     // checked in the reaction to new state
