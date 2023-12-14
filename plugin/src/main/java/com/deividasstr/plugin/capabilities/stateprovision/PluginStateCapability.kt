@@ -15,7 +15,7 @@ class PluginStateCapability<T : PluginData>(
 
     @Suppress("UNCHECKED_CAST")
     override fun setState(state: PluginData) {
-        if (initialPluginData::class == state::class) {
+        if (initialPluginData.pluginType == state.pluginType) {
             _state.value = state as T
         }
     }
