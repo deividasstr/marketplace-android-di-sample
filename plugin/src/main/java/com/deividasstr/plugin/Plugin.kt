@@ -8,8 +8,6 @@ abstract class Plugin {
     private val _capabilities = mutableListOf<PluginCapability>()
     val capabilities: List<PluginCapability> = _capabilities
 
-    abstract val pluginType: PluginType
-
     inner class Capability<F : Plugin, T : PluginCapability>(
         init: () -> T
     ) : ReadOnlyProperty<F, T> {
@@ -21,5 +19,9 @@ abstract class Plugin {
         override fun getValue(thisRef: F, property: KProperty<*>): T {
             return capability
         }
+    }
+
+    fun <F : Plugin, T : PluginCapability> F.capability(init: () -> T, ): ReadOnlyProperty<F, T> {
+        return Capability(init)
     }
 }

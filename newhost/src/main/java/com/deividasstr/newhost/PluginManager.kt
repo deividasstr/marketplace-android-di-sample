@@ -1,5 +1,6 @@
 package com.deividasstr.newhost
 
+import com.deividasstr.plugin.CheckoutPlugin
 import com.deividasstr.plugin.Plugin
 import com.deividasstr.plugin.capabilities.progress.ProgressProvider
 import com.deividasstr.plugin.capabilities.statechange.StateChangeProvider
@@ -11,7 +12,7 @@ import com.deividasstr.plugin.pluginstatechanges.HostStateChange
 import javax.inject.Inject
 
 class PluginManager @Inject constructor(
-    plugins: @JvmSuppressWildcards Set<Plugin>,
+    plugins: @JvmSuppressWildcards Set<CheckoutPlugin>,
     pluginComparator: PluginComparator,
 ) {
     private val sortedPlugins = plugins.sortedWith(pluginComparator.comparator)

@@ -1,6 +1,5 @@
 package com.deividasstr.plugin.plugindata
 
-import com.deividasstr.plugin.PluginType
-import com.deividasstr.plugin.plugindata.PluginData
+import com.deividasstr.plugin.CheckoutPluginType
 
-data class PaymentPluginData(val data: String) : PluginData(pluginType = PluginType.PAYMENT)
+data class PaymentPluginData(val data: String) : PluginData(pluginType = CheckoutPluginType.PAYMENT)

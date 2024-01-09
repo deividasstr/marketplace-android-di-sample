@@ -1,5 +1,6 @@
 package com.deividasstr.oldhost
 
+import com.deividasstr.plugin.CheckoutPlugin
 import com.deividasstr.plugin.Plugin
 import com.deividasstr.plugin.capabilities.progress.ProgressProvider
 import com.deividasstr.plugin.capabilities.statechange.StateChangeProvider
@@ -10,7 +11,7 @@ import com.deividasstr.plugin.plugindata.PluginData
 import com.deividasstr.plugin.pluginstatechanges.HostStateChange
 import javax.inject.Inject
 
-class PluginManager @Inject constructor(private val plugins: @JvmSuppressWildcards Set<Plugin>) {
+class PluginManager @Inject constructor(private val plugins: @JvmSuppressWildcards Set<CheckoutPlugin>) {
 
 
     fun getPluginStateProvider(): List<PluginStateConsumer<out PluginData>> {

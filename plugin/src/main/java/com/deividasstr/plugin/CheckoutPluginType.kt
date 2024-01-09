@@ -1,6 +1,6 @@
 package com.deividasstr.plugin
 
-enum class PluginType {
+enum class CheckoutPluginType {
     PAYMENT,
     CHECKOUT,
     SHIPPING,

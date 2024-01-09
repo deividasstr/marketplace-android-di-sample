@@ -1,5 +1,5 @@
 package com.deividasstr.plugin.plugindata
 
-import com.deividasstr.plugin.PluginType
+import com.deividasstr.plugin.CheckoutPluginType
 
-abstract class PluginData(val pluginType: PluginType)
+abstract class PluginData(val pluginType: CheckoutPluginType)

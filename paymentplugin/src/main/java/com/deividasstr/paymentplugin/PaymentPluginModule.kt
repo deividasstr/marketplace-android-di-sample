@@ -3,6 +3,7 @@ package com.deividasstr.paymentplugin
 import androidx.lifecycle.ViewModel
 import com.deividasstr.base.FragmentScope
 import com.deividasstr.base.ViewModelKey
+import com.deividasstr.plugin.CheckoutPlugin
 import com.deividasstr.plugin.Plugin
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Binds
@@ -19,7 +20,7 @@ abstract class PaymentPluginModule {
 
     @Binds
     @IntoSet
-    abstract fun bindPaymentPlugin(pluginManager: PaymentPluginImpl): Plugin
+    abstract fun bindPaymentPlugin(pluginManager: PaymentPluginImpl): CheckoutPlugin
 }
 
 @Module
