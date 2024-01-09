@@ -7,6 +7,7 @@ import com.deividasstr.base.ActivityScope
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
 import com.deividasstr.base.SingleIn
+import com.deividasstr.base.VintedFragmentCreator
 import javax.inject.Inject
 
 @SingleIn(ActivityScope::class)

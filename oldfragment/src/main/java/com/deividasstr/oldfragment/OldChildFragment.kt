@@ -1,11 +1,11 @@
-package com.deividasstr.newfragment
+package com.deividasstr.oldfragment
 
-import androidx.fragment.app.Fragment
 import com.deividasstr.base.BaseFragment
 import javax.inject.Inject
 
-class NewChildFragment @Inject constructor(
-    private val scopedDep: ScopedDep
-) : BaseFragment() {
+class OldChildFragment : BaseFragment() {
+
+    @Inject
+    lateinit var scopedDep: ScopedDep
 
 }

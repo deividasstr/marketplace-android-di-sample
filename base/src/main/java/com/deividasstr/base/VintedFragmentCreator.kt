@@ -1,9 +1,7 @@
-package com.deividasstr
+package com.deividasstr.base
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentFactory
-import com.deividasstr.base.Args
-import com.deividasstr.base.BaseFragment
 import javax.inject.Inject
 
 /**

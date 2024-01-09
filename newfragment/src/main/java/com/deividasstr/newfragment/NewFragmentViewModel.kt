@@ -10,6 +10,7 @@ import dagger.assisted.AssistedInject
 
 class NewFragmentViewModel @AssistedInject constructor(
     private val baseDep: BaseDependency,
+    private val scopedDep: ScopedDep,
     @Assisted private val arguments: Arguments,
     @Assisted private val savedStateHandle: SavedStateHandle
 ): ViewModel() {

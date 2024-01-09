@@ -9,11 +9,14 @@ import androidx.fragment.app.viewModels
 import com.deividasstr.base.Args
 import com.deividasstr.base.BaseFragment
 import com.deividasstr.base.InjectingSavedStateViewModelFactory
+import com.deividasstr.base.VintedChildFragmentCreator
+import com.deividasstr.base.VintedChildFragmentFactory
 import com.deividasstr.newfragment.databinding.FragmentNewBinding
 import javax.inject.Inject
 
 class NewFragment @Inject constructor(
-    private val viewModelFactory: InjectingSavedStateViewModelFactory<NewFragmentViewModel.Arguments>
+    private val viewModelFactory: InjectingSavedStateViewModelFactory<NewFragmentViewModel.Arguments>,
+    private val vintedFragmentCreator: VintedChildFragmentCreator
 ) : BaseFragment() {
 
     private var _binding: FragmentNewBinding? = null
@@ -35,6 +38,16 @@ class NewFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.newFragmentTextView.text = "New fragment: ${viewModel.getBaseDep()}"
+
+        createFragment()
+    }
+
+    private fun createFragment() {
+        val newChildFragment = vintedFragmentCreator.create(NewChildFragment) { with("flow") }
+        //parentFragmentManager.fragmentFactory = vintedFragmentCreator
+        childFragmentManager.beginTransaction()
+            .replace(R.id.new_fragment_container, newChildFragment)
+            .commit()
     }
 
     companion object : Args<NewFragment> {

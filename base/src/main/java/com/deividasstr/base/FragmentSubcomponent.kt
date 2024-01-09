@@ -1,17 +1,14 @@
-package com.deividasstr
+package com.deividasstr.base
 
-import com.deividasstr.base.ActivityScope
-import com.deividasstr.base.FragmentScope
-import com.deividasstr.base.SingleIn
 import com.squareup.anvil.annotations.ContributesSubcomponent
 import com.squareup.anvil.annotations.ContributesTo
-import dagger.Subcomponent
+import javax.inject.Provider
 
 @SingleIn(FragmentScope::class)
 @ContributesSubcomponent(scope = FragmentScope::class, parentScope = ActivityScope::class)
 interface FragmentSubcomponent {
 
-    fun getFragmentMap(): FragmentMap
+    fun getFragmentMap(): Map<Class<out BaseFragment>, @JvmSuppressWildcards Provider<BaseFragment>>
 
     @ContributesSubcomponent.Factory
     interface Factory {
@@ -20,6 +17,6 @@ interface FragmentSubcomponent {
 
     @ContributesTo(ActivityScope::class)
     interface Parent {
-        fun provideSubcomponent(): FragmentSubcomponent.Factory
+        fun provideSubcomponent(): Factory
     }
 }

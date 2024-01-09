@@ -18,6 +18,9 @@ class OldFragment : BaseFragment() {
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory
 
+    @Inject
+    lateinit var scopedDep: ScopedDep
+
     private val viewModel: OldFragmentViewModel by viewModels {
         viewModelFactory
     }
@@ -34,5 +37,8 @@ class OldFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.oldFragmentTextView.text = "Old fragment: ${viewModel.getBaseDep()}"
+        childFragmentManager.beginTransaction()
+            .replace(R.id.old_fragment_container, OldChildFragment())
+            .commit()
     }
 }
